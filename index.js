@@ -1,20 +1,40 @@
-import { db } from "../firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore/lite";
+const calRem = (size) => `${size / 16}rem`;
 
-//getList 함수를 호출할 때, collection_name을 입력해주면 해당 컬렉션에 맞는 데이터를 불러옵니다.
-async function getList(collection_name) {
-  const querySnapshot = await getDocs(collection(db, collection_name));
-  if (querySnapshot) {
-    const _data = [];
-    querySnapshot.forEach((doc) => _data.push({ ...doc.data(), id: doc.id }));
-    return _data;
-  } else alert("데이터를 불러올 수 없어요! 새로고침해주세요 :-) ");
-}
+const color = {
+  main_green: "#81B622",
+  main_black: "#000",
+  main_gray: "#dae1e6",
+  light_green: "##ECF87F",
+  dark_green: "#3D550C",
+  medium_green: "#59981A",
+};
 
-async function addPost(collection_name, data = { name: "", address: "" }) {
-  await addDoc(collection(db, collection_name), {
-    data,
-  });
-}
+const fontSize = {
+  12: calRem(12),
+  14: calRem(14),
+  18: calRem(18),
+  20: calRem(20),
+  30: calRem(30),
+  40: calRem(40),
 
-export { getList, addPost };
+  //모바일 폰트
+  11: calRem(11),
+  16: calRem(16),
+  22: calRem(22),
+  28: calRem(28),
+};
+
+const fontWeight = {
+  extraBold: 800,
+  semiBold: 600,
+  regular: 400,
+};
+
+const theme = {
+  fontSize,
+  fontWeight,
+  color,
+  calRem,
+};
+
+export default theme;
