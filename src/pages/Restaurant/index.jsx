@@ -4,7 +4,7 @@ import styled from "styled-components";
 //components
 import Presenter from "./Presenter.jsx";
 
-export default function Cafe({ collectionName }) {
+export default function Restaurant({ collectionName }) {
   const [list, setList] = useState([]);
 
   return (

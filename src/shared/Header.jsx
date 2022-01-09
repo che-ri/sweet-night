@@ -1,26 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { MENU_LIST } from "./constants";
 
-const menu_list = ["카페", "맛집", "술집"];
-
-export default function Header() {
-  const [currentMenuIdx, setCurrentMenuIdx] = useState(0);
+export default function Header({ currentMenuIdx, setCurrentMenuIdx }) {
+  const menu_temp = MENU_LIST.map((menu) => menu.ko);
   return (
     <HeaderWrapper>
-      {menu_list.map((menu, idx) => (
-        <Menu
-          idx={idx}
-          currentMenuIdx={currentMenuIdx}
-          onClick={() => setCurrentMenuIdx(idx)}
-        >
-          <strong>{menu}</strong>
-        </Menu>
-      ))}
+      <Logo>달달한 밤</Logo>
+      <MenuWrapper>
+        {menu_temp.map((menu, idx) => (
+          <Menu
+            idx={idx}
+            currentMenuIdx={currentMenuIdx}
+            onClick={() => setCurrentMenuIdx(idx)}
+          >
+            <strong>{menu}</strong>
+          </Menu>
+        ))}
+      </MenuWrapper>
     </HeaderWrapper>
   );
 }
 
 const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid ${({ theme }) => theme.color.main_gray};
+  padding: 0 20px;
+`;
+
+const Logo = styled.strong`
+  font-size: 20px;
+`;
+
+const MenuWrapper = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;

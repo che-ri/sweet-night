@@ -4,7 +4,7 @@ const color = {
   main_green: "#81B622",
   main_black: "#000",
   main_gray: "#dae1e6",
-  light_green: "##ECF87F",
+  light_green: "#ECF87F",
   dark_green: "#3D550C",
   medium_green: "#59981A",
 };
